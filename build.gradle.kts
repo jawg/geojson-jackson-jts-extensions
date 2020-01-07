@@ -10,7 +10,7 @@ plugins {
 description = "Kotlin extensions to convert GeoJSON to JTS and vice-versa"
 
 group = "io.jawg.geojson"
-version = "1.0.0"
+version = "1.1.0-SNAPSHOT"
 
 val isReleaseVersion = !version.toString().endsWith("SNAPSHOT")
 

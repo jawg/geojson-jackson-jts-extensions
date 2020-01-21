@@ -1,4 +1,4 @@
-# 1.1.0-SNAPSHOT
+# 1.0.1 2020-01-21
 
 * Upgrade `geojson-jackson` to `1.2.1`
 * Set `geojson-jackson` and `jts-core` as gradle `api`

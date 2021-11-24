@@ -103,7 +103,7 @@ dependencies {
   implementation(kotlin("stdlib-jdk8"))
   implementation(kotlin("reflect"))
   api("io.jawg.geojson:geojson-jackson:1.2.1")
-  api("org.locationtech.jts:jts-core:1.16.1")
+  api("org.locationtech.jts:jts-core:1.17.0")
   testImplementation(kotlin("test-junit5"))
   testImplementation("org.junit.jupiter:junit-jupiter-api:5.5.2")
   testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.5.2")

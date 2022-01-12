@@ -1,3 +1,7 @@
+# 1.0.2 2022-01-12
+
+* chore: upgrade versions
+
 # 1.0.1 2020-01-21
 
 * Upgrade `geojson-jackson` to `1.2.1`

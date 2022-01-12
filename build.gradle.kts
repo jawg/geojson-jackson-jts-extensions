@@ -1,16 +1,13 @@
-import org.jetbrains.kotlin.backend.common.onlyIf
-
 plugins {
-  maven
   `maven-publish`
   signing
-  kotlin("jvm") version "1.3.61"
+  kotlin("jvm")
 }
 
 description = "Kotlin extensions to convert GeoJSON to JTS and vice-versa"
 
 group = "io.jawg.geojson"
-version = "1.0.1"
+version = "${property("version")}"
 
 val isReleaseVersion = !version.toString().endsWith("SNAPSHOT")
 
@@ -39,10 +36,6 @@ tasks {
       (options as StandardJavadocDocletOptions).addBooleanOption("html5", true)
     }
   }
-}
-
-repositories {
-  mavenCentral()
 }
 
 publishing {
@@ -94,17 +87,15 @@ publishing {
 }
 
 signing {
-  onlyIf({ isReleaseVersion }) {
-    sign(publishing.publications["mavenJava"])
-  }
+  sign(publishing.publications["mavenJava"])
+}
+
+tasks.withType<Sign>().configureEach {
+  onlyIf { isReleaseVersion }
 }
 
 dependencies {
-  implementation(kotlin("stdlib-jdk8"))
-  implementation(kotlin("reflect"))
-  api("io.jawg.geojson:geojson-jackson:1.2.1")
-  api("org.locationtech.jts:jts-core:1.16.1")
+  api("io.jawg.geojson:geojson-jackson:${property("version.jawg.geojson-jackson")}")
+  api("org.locationtech.jts:jts-core:${property("version.jts")}")
   testImplementation(kotlin("test-junit5"))
-  testImplementation("org.junit.jupiter:junit-jupiter-api:5.5.2")
-  testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.5.2")
 }

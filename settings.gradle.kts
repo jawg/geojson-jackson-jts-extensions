@@ -1,3 +1,13 @@
 rootProject.name = "geojson-jackson-jts-extensions"
 
-enableFeaturePreview("GRADLE_METADATA")
+pluginManagement {
+  plugins {
+    kotlin("jvm") version "${extra["version.kotlin"]}"
+  }
+}
+
+dependencyResolutionManagement {
+  repositories {
+    mavenCentral()
+  }
+}

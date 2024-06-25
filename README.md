@@ -9,7 +9,7 @@ Kotlin extensions to convert GeoJSON to JTS and vice-versa.
 
 Add the dependency in your ```dependencies { ... }```:
 ```kotlin
-implementation("io.jawg.geojson:geojson-jackson-jts-extensions:1.0.2")
+implementation("io.jawg.geojson:geojson-jackson-jts-extensions:1.0.3")
 ```
 
 For SNAPSHOT versions add the repository in your ```repositories { ... }```:

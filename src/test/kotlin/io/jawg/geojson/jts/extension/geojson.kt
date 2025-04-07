@@ -1,6 +1,7 @@
 package io.jawg.geojson.jts.extension
 
 import io.jawg.geojson.dsl.feature
+import io.jawg.geojson.dsl.featureCollection
 import io.jawg.geojson.dsl.geometryCollection
 import io.jawg.geojson.dsl.lineString
 import io.jawg.geojson.dsl.multiLineString
@@ -285,5 +286,31 @@ object GeoJson {
     }
 
   }
-}
 
+  object FeatureCollections {
+
+    val CITIES = featureCollection {
+      feature {
+        id = "paris75000"
+        point {
+          lat = 48.8566
+          lng = 2.3522
+        }
+        properties {
+          "population" to 2_141_000
+        }
+      }
+      feature {
+        id = "berlin"
+        point {
+          lat = 52.5200
+          lng = 13.4050
+        }
+        properties {
+          "population" to 3_432_000
+        }
+      }
+    }
+
+  }
+}

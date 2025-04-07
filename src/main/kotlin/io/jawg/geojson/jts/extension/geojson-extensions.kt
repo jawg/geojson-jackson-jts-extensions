@@ -1,6 +1,8 @@
 package io.jawg.geojson.jts.extension
 
 import io.jawg.geojson.Feature
+import io.jawg.geojson.FeatureCollection
+import io.jawg.geojson.GeoJsonObject
 import io.jawg.geojson.Geometry
 import io.jawg.geojson.GeometryCollection
 import io.jawg.geojson.LineString
@@ -130,7 +132,7 @@ fun MultiPolygon.toJts(factory: GeometryFactory = GeometryFactories.Default): Jt
  * Transform a GeoJSON [Geometry] to a JTS [JtsGeometry].
  * @param factory geometry factory used to create the geometry. Default to [GeometryFactories.Default]
  */
-fun Geometry<*>.toJts(factory: GeometryFactory = GeometryFactories.Default): JtsGeometry {
+fun GeoJsonObject.toJts(factory: GeometryFactory = GeometryFactories.Default): JtsGeometry {
   return when (this) {
     is Point -> toJts(factory)
     is MultiPoint -> toJts(factory)
@@ -139,6 +141,8 @@ fun Geometry<*>.toJts(factory: GeometryFactory = GeometryFactories.Default): Jts
     is Polygon -> toJts(factory)
     is MultiPolygon -> toJts(factory)
     is GeometryCollection -> toJts(factory)
+    is Feature -> toJts(factory)
+    is FeatureCollection -> toJts(factory)
     else -> throw IllegalArgumentException("Unsupported geometry type $type")
   }
 }
@@ -160,4 +164,13 @@ fun GeometryCollection.toJts(factory: GeometryFactory = GeometryFactories.Defaul
 fun Feature.toJts(factory: GeometryFactory = GeometryFactories.Default): JtsGeometry {
   val geometry = requireNotNull(geometry) { "Feature geometry must not be null when converting to JTS Geometry" }
   return geometry.toJts(factory).also { it.userData = FeatureData(id, properties) }
+}
+
+/**
+ * Transform a GeoJSON [FeatureCollection] to a JTS [JtsGeometryCollection]
+ * @param factory geometry factory used to create the geometry. Default to [GeometryFactories.Default]
+ */
+fun FeatureCollection.toJts(factory: GeometryFactory = GeometryFactories.Default): JtsGeometryCollection {
+  val geometries = features.map { it.toJts(factory) }.toTypedArray()
+  return factory.createGeometryCollection(geometries)
 }

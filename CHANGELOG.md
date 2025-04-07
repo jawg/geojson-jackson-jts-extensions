@@ -2,6 +2,7 @@
 
 * chore: upgrade versions
 * build: add gradle-maven-publish-plugin
+* feat: add conversion from geojson to jts for FeatureCollection
 
 # 1.0.3 2024-06-25
 

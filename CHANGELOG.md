@@ -1,6 +1,7 @@
 # 1.1.0-SNAPSHOT
 
 * chore: upgrade versions
+* build: add gradle-maven-publish-plugin
 
 # 1.0.3 2024-06-25
 

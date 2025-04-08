@@ -1,4 +1,10 @@
-# 1.1.0-SNAPSHOT
+# 1.0.4 2025-04-08
+
+* chore: upgrade versions
+* build: add gradle-maven-publish-plugin
+* feat: add conversion from geojson to jts for FeatureCollection
+
+# 1.0.3 2024-06-25
 
 * chore: upgrade versions
 

@@ -2,8 +2,11 @@ package io.jawg.geojson.jts.extension
 
 import io.jawg.geojson.Geometry
 import org.junit.jupiter.api.Test
+import org.locationtech.jts.geom.GeometryCollection
 import kotlin.test.assertEquals
 import kotlin.test.assertNotNull
+import kotlin.test.assertNull
+import kotlin.test.assertTrue
 
 internal class GeoJsonExtensionsTest {
 
@@ -113,6 +116,17 @@ internal class GeoJsonExtensionsTest {
     assertNotNull(jts.userData)
     assertEquals(Jts.Features.PARIS.userData, jts.userData)
     assertEqualsExact(Jts.Features.PARIS, jts)
+  }
+
+  @Test
+  internal fun `feature collection`() {
+    val geojson = GeoJson.FeatureCollections.CITIES
+    val jts = geojson.toJts()
+
+    assertNull(jts.userData)
+    assertEquals(2, jts.numGeometries)
+    assertEquals(Jts.Features.PARIS.userData, jts.getGeometryN(0).userData)
+    assertEqualsExact(Jts.Features.PARIS, jts.getGeometryN(0))
   }
 
 }

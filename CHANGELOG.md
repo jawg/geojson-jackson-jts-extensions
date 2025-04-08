@@ -1,3 +1,5 @@
+# 1.1.0-SNAPSHOT
+
 # 1.0.4 2025-04-08
 
 * chore: upgrade versions

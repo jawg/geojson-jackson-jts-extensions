@@ -1,3 +1,5 @@
+# 1.2.0-SNAPSHOT
+
 # 1.1.0 2026-07-01
 
 * build: upgrade to Java 25 and upgrade dependencies

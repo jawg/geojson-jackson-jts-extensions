@@ -1,6 +1,7 @@
 # 1.1.0-SNAPSHOT
 
 * build: upgrade to Java 25 and upgrade dependencies
+* build: use Gradle Version Catalog
 
 # 1.0.4 2025-04-08
 

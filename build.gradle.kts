@@ -1,9 +1,7 @@
-import com.vanniktech.maven.publish.SonatypeHost
-
 plugins {
-  kotlin("jvm")
-  id("com.github.ben-manes.versions")
-  id("com.vanniktech.maven.publish")
+  alias(libs.plugins.kotlin.jvm)
+  alias(libs.plugins.ben.manes.versions)
+  alias(libs.plugins.maven.publish)
 }
 
 description = "Kotlin extensions to convert GeoJSON to JTS and vice-versa"
@@ -12,7 +10,7 @@ group = "io.jawg.geojson"
 version = "${property("version")}"
 
 kotlin {
-  jvmToolchain(21)
+  jvmToolchain(25)
 }
 
 tasks {
@@ -22,7 +20,7 @@ tasks {
 }
 
 mavenPublishing {
-  publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL)
+  publishToMavenCentral()
   signAllPublications()
 
   pom {
@@ -32,7 +30,7 @@ mavenPublishing {
     licenses {
       license {
         name.set("The Apache License, Version 2.0")
-        url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
+        url.set("https://www.apache.org/licenses/LICENSE-2.0.txt")
       }
     }
     organization {
@@ -55,7 +53,7 @@ mavenPublishing {
 }
 
 dependencies {
-  api("io.jawg.geojson:geojson-jackson:${property("version.jawg.geojson-jackson")}")
-  api("org.locationtech.jts:jts-core:${property("version.jts")}")
+  api(libs.geojson.jackson)
+  api(libs.jts)
   testImplementation(kotlin("test-junit5"))
 }

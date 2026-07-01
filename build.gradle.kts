@@ -1,5 +1,3 @@
-import com.vanniktech.maven.publish.SonatypeHost
-
 plugins {
   kotlin("jvm")
   id("com.github.ben-manes.versions")
@@ -12,7 +10,7 @@ group = "io.jawg.geojson"
 version = "${property("version")}"
 
 kotlin {
-  jvmToolchain(21)
+  jvmToolchain(25)
 }
 
 tasks {
@@ -22,7 +20,7 @@ tasks {
 }
 
 mavenPublishing {
-  publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL)
+  publishToMavenCentral()
   signAllPublications()
 
   pom {
@@ -32,7 +30,7 @@ mavenPublishing {
     licenses {
       license {
         name.set("The Apache License, Version 2.0")
-        url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
+        url.set("https://www.apache.org/licenses/LICENSE-2.0.txt")
       }
     }
     organization {
